@@ -16,7 +16,7 @@ class BooksApp extends React.Component {
    });
  }
 
-  //book si shelf
+
 
  updateToNewShelf = (book,shelf) =>{
    BooksAPI.update(book,shelf)
@@ -41,8 +41,7 @@ class BooksApp extends React.Component {
 
 
   render() {
-    console.log(this.state.books)
-
+  
     return (
       <div className="app">
         <Route exact path='/' render= {() =>(
@@ -51,7 +50,8 @@ class BooksApp extends React.Component {
             />
         )} />
         <Route path='/search' render ={ () =>(
-          <SearchPage changeShelf = {this.changeShelf}/>
+          <SearchPage changeShelf = {this.changeShelf}
+            allBooks = {this.state.books} />
          )}/>
       </div>
     )
