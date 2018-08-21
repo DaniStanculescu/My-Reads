@@ -20,9 +20,29 @@ filterResult= book =>{
     if(b.imageLinks)
       newBooks.push(b);
   }
+  ///here we verify if any book from results is on the page , if it is the shelf updates to
+  //the shelf on the page else it recieves the shelf None
+
+   for(let book of this.props.allBooks)
+   {
+     for(let result of newBooks)
+     {
+       if (result.title === book.title){
+              result.shelf = book.shelf
+       }
+       else{
+         result.shelf = 'none';
+       }
+
+     }
+
+   }
+
+
   this.setState({
     filteredResults:newBooks
   })
+  console.log(this.state.filteredResults)
 }
 
 
@@ -37,27 +57,33 @@ filterResult= book =>{
   }
 
 updateSearchedBooksInList = (query) => {
-  if(query){
+
+
+  if(query.length===0){
+    this.setState({searchResults:[]})
+   //this.filterResult(this.state.searchResults)
+  this.setState({
+    filteredResults:[]
+  });
+
+  }
+
+  else if(query.length>0){
+
     BooksAPI.search(query).then((books) =>{
        if(books.error){
          this.setState({searchResults:[]})
           this.filterResult(this.state.searchResults)
        }
-       else{
+       else {
          this.setState({searchResults:books})
-      //   this.filterResult(this.state.searchResults)
+
        this.filterResult(this.state.searchResults)
 
        }
 
     })
-  }else{
-    this.setState({searchResults:[]})
- this.filterResult(this.state.searchResults)
-    //this.filterResult(this.state.searchResults)
-
   }
-
 
 }
 

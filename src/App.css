@@ -174,3 +174,13 @@ body, .app {
   text-align: center;
   font-size: 0.8em;
 }
+
+.book-shelf-selected{
+  font-size: 15px;
+  font-weight: bold;
+  color:black;
+}
+
+.book-selected-name{
+  color:red;
+}

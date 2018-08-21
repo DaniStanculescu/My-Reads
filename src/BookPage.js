@@ -11,7 +11,18 @@ class Books extends Component {
 
   render() {
 
-    
+  let  currentlyReading ='';
+  let read = '';
+  let wantToRead = '';
+  let none ='';
+
+for (let book of this.props.booksPage)
+{
+  console.log(book.shelf)
+}
+
+
+
     return(
     <div className='bookshelf-books'>
       <ol className='books-grid'>
@@ -27,15 +38,16 @@ class Books extends Component {
                  value = {book.shelf}
                  >
                  <option value="move" disabled>Move to...</option>
-                 <option value="currentlyReading">Currently Reading</option>
+                 <option value="currentlyReading" >Currently Reading</option>
                  <option value="wantToRead">Want to Read</option>
-                 <option value="read">Read</option>
-                 <option value="none">None</option>
+                 <option value="read">Read </option>
+                 <option value="none">None </option>
                </select>
              </div>
            </div>
            <div className="book-title">{book.title}</div>
            <div className="book-authors">{book.authors}</div>
+           <div className="book-shelf-selected">Current shelf <span className='book-selected-name'>{book.shelf}</span></div>
          </div>
        </li>
       ))}
