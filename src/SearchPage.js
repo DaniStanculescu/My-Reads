@@ -30,9 +30,7 @@ filterResult= book =>{
        if (result.title === book.title){
               result.shelf = book.shelf
        }
-       else{
-         result.shelf = 'none';
-       }
+       
 
      }
 

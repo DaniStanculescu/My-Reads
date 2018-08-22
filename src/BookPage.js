@@ -35,7 +35,7 @@ for (let book of this.props.booksPage)
                <select
                  name='shelf'
                  onChange= {e => this.props.changeShelf(e,book)}
-                 value = {book.shelf}
+                 value = {book.shelf ? book.shelf : 'none'}
                  >
                  <option value="move" disabled>Move to...</option>
                  <option value="currentlyReading" >Currently Reading</option>
